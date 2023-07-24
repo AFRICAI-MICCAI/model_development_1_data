@@ -14,14 +14,17 @@ https://colab.research.google.com/drive/16pBJQePbqkz3QFV54L4NIkOn1kwpuRrj#scroll
 Public and free datasets in the medical field are quite limited. The following links are the best way to get
 started.
 
-Paper: https://medmnist.com/
-Medical MNIST Data: https://www.kaggle.com/datasets/andrewmvd/medical-mnist
+*Medical MNIST Paper*: https://medmnist.com/
 
-TCIA: The Canver Imaging Archive (tutorial notebook included)
+*Medical MNIST Data*: https://www.kaggle.com/datasets/andrewmvd/medical-mnist
+
+*TCIA*: The Cancer Imaging Archive (tutorial notebook included)
 https://wiki.cancerimagingarchive.net/display/Public/Wiki
-tutorials: https://github.com/kirbyju/TCIA_Notebooks
 
-Grand Challenge: To try out your algorithm on public dataset from challenges
+*TCIA tutorials*: https://github.com/kirbyju/TCIA_Notebooks
+
+*Grand Challenge*: To try out your algorithm on public dataset from challenges
+
 https://grand-challenge.org/documentation/
 
 
