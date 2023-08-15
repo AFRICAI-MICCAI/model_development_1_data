@@ -1,39 +1,58 @@
-# frameworks_and_datasets
-Materials for the AFRICAI 2023 summer school session on Open Access Frameworks and Datasets
-
-# Processing
-Given that we have our dataset ready and at hand and have our preprocessing and AI algorithm,
-we nned a compute power to run the analysis. 
-Eg-
-Google collab: is a free notebook environment that runs entirely in the cloud.
-https://colab.research.google.com/drive/16pBJQePbqkz3QFV54L4NIkOn1kwpuRrj#scrollTo=BCmeo64HcLfs
-(Tutorial included)
+# AFRICAI/MICCAI AI in Medical Imaging in Africa Summer School - 2023
+Materials for the 1st AFRICAI Summer School session for the session
+"Model Development 1: Data-centric best practices and common pitfalls and open access infrastructures". 
+For more information, see the AFRICAI website: https://africai.org/summer-school/. 
 
 
-# Datasets
+# 1. Open Acccess Datasets
 Public and free datasets in the medical field are quite limited. The following links are the best way to get
 started.
 
-*Medical MNIST Paper*: https://medmnist.com/
-
-*Medical MNIST Data*: https://www.kaggle.com/datasets/andrewmvd/medical-mnist
-
+## The Cancer Imaging Archive
 *TCIA*: The Cancer Imaging Archive (tutorial notebook included)
 https://wiki.cancerimagingarchive.net/display/Public/Wiki
 
 *TCIA tutorials*: https://github.com/kirbyju/TCIA_Notebooks
 
+## UK Biobank
+
+## MedMNIST
+*Medical MNIST Paper*: https://medmnist.com/
+
+*Medical MNIST Data*: https://www.kaggle.com/datasets/andrewmvd/medical-mnist
+
+## Grand Challenges
 *Grand Challenge*: To try out your algorithm on public dataset from challenges
 
 https://grand-challenge.org/documentation/
 
+# 2. Data inspection and curation
+DICOM
 
-# AI-Toolboxes
+# 3. Data splitting 
+Exclusion / inclusion criteria 
 
-# Pre-trained models
- A collection of pretrained medical imaging models can be found in these platforms.
-- https://monai.io/model-zoo.html (jupyter tutorial included)
-- kaggle: https://www.kaggle.com/models
-- hugging face: tutorial https://huggingface.co/learn/nlp-course/chapter3/3?fw=pt
+Training, testing, external validation 
 
-# Containerization
+# 4. Data preprocessing 
+
+Image preprocessing (Apostolia) 
+
+Registration (Martijn) 
+
+# 5. Data augmentation
+
+# 6. Data reporting
+
+# 7. Data loaders
+
+# Contact
+Coordinators:
+
+- Apostolia Tsirikoglou (apostolia.tsirikoglou@ki.se)
+- Martijn Starmans (m.starmans@erasmusmc.nl)
+
+Contributers:
+
+- Mahlet Birhanu
+- Douwe Spaanderman
