@@ -39,8 +39,11 @@ Training, testing, external validation
 Image preprocessing (Apostolia) 
 
 Registration (Martijn) 
+*Beginner level:* https://github.com/MedicalImageAnalysisTutorials/ImageRegistrationTutorial
+*Image registration with MONAI:* https://github.com/Project-MONAI/tutorials
 
 # 5. Data augmentation
+*Tensorflow tutorials:* https://notebook.community/tensorflow/docs/site/en/tutorials/images/data_augmentation
 
 # 6. Data reporting
 
