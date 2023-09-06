@@ -6,6 +6,17 @@ For more information, see the AFRICAI website: https://africai.org/summer-school
 You can find  the basic outline and introduction of the sections covered in this session. 
 Each section corresponds to the tutorial notebooks included in the `Notebooks` folder. Optional notebooks are added for future reference and are not covered in this session.
 
+# Data-centric AI
+What is Data-centric AI?  
+[*"Data-centric AI is the discipline of systematically engineering the data used to build an AI system."*](https://datacentricai.org/)    
+
+* Interesting reads and talks
+    * [Labeling and Crowdsourcing](https://datacentricai.org/labeling-and-crowdsourcing/), [Data Augmentation](https://datacentricai.org/data-augmentation/), and [Data in Deployment](https://datacentricai.org/data-in-deployment/)
+    * [Algorithms for data-centric AI](https://datacentricai.org/blog/algorithms-for-data-centric-ai/) and [Finding millions of label errors with Cleanlab](https://datacentricai.org/blog/finding-millions-of-label-errors-with-cleanlab/)
+
+<br>_Practical resource_: [**Course on Data-centric AI** at MIT](https://dcai.csail.mit.edu/) (free public access)  
+&nbsp; with [video lectures](https://dcai.csail.mit.edu/lectures/) and [notebooks](https://github.com/dcai-course/dcai-lab)
+
 # 0. Introduction to Google colab
 Google collab is a free notebook environment that runs entirely in the [cloud](https://colab.research.google.com/drive/16pBJQePbqkz3QFV54L4NIkOn1kwpuRrj#scrollTo=BCmeo64HcLfs).
 
