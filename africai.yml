@@ -1,12 +1,5 @@
 name: africai
 dependencies:
-  - python=3.7
-  - numpy
-  - pandas
+  - python=3.10
   - pip
-  - pip:
-    - jupyterlab
-    - ipykernel
-    - matplotlib
-    - scikit-image
-    - simplejson
+  - ipykernel
