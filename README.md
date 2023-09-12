@@ -17,7 +17,7 @@ What is Data-centric AI?
 <br>_Practical resource_: [**Course on Data-centric AI** at MIT](https://dcai.csail.mit.edu/) (free public access)  
 &nbsp; with [video lectures](https://dcai.csail.mit.edu/lectures/) and [notebooks](https://github.com/dcai-course/dcai-lab)
 
-# 0. Introduction to Google colab
+## 0. Introduction to Google colab
 Google collab is a free notebook environment that runs entirely in the [cloud](https://colab.research.google.com/drive/16pBJQePbqkz3QFV54L4NIkOn1kwpuRrj#scrollTo=BCmeo64HcLfs).
 
 We will be using extensive use of this notebook throught this summer school. Google colab lets us write and execute arbitrary python code through the browser, and is especially well suited to machine learning, data analysis and education. More technically, Colab is a hosted Jupyter notebook service that requires no setup to use, while providing access free of charge to computing resources including GPUs.
@@ -48,36 +48,86 @@ Grand Challenge is a platform for end-to-end development of machine learning sol
 
 Link: https://grand-challenge.org/documentation/
 
-# 2. Data inspection and curation
-To make propoer use of open access data, it is mandatory to understand the content, inspect for irregularities, and curate the data to fit our research needs. Medical imaging data can come in different format. 
+# 2. Know your data
+To make most out of the data at hand we need to know the power they carry. It is essential to inspect them according to their format and analyze all the information they contain, from pixel data and ground truth labels statistics, to outliers, irregularities and metadata analysis. 
 
-[TCIA tutorials repository](https://github.com/kirbyju/TCIA_Notebooks) has many resources on curating dicom data.
+_Important note_: If you come across data that contain sensitive personal information it is essential to treat them carefully and according to your state's and institution's regulations, usually by either fully anonymize or pseudonymize them. There are several open-source tools and examples available, e.g. for handling DICOM files provided by [pydicom](https://github.com/pydicom/deid). Please look accordingly to your data type and application.
 
-[RSNA tutorials](https://github.com/RSNA/AI-Deep-Learning-Lab-2022/blob/main/sessions/data-curation) and [MONAI tutorials](https://github.com/Project-MONAI/tutorials) also contain great resources in this topic.
+## Data inspection and curation according to types and modalities
+Medical imaging comes to various shapes and forms, with 
+- radiology modalities (X-ray, CT, MRI, PET, etc.) and 
+- digital pathology 
 
+to be the most commonly used in computer vision. 
+
+### Radiology modalities
+
+[**DICOM**](https://www.dicomstandard.org/about-home) (Digital Imaging and Communications in Medicine) is the international standard for medical images and associated information/metadata. DICOM covers almost every radiology modality, with an increasing expand to further domains.
+
+There are several tools for inspecting and handling DICOM data, for example:
+- TCIA provides useful DICOM introductory material and examples of [DICOM tools](https://wiki.cancerimagingarchive.net/display/Public/DICOM+Tools), while [TCIA_Notebooks](https://github.com/kirbyju/TCIA_Notebooks) offer examples on downloading and inspecting DICOM data.
+- [pydicom](https://pydicom.github.io/pydicom/stable/index.html#) is a python package for working with DICOM files. In their [Tutorials](https://pydicom.github.io/pydicom/stable/tutorials/index.html) and [Examples](https://pydicom.github.io/pydicom/stable/auto_examples/index.html#) you can find code samples ranging from dataset basics to image and metadata processing.  
+- MONAI tutorial on [loading medical images](https://github.com/Project-MONAI/tutorials/blob/main/modules/load_medical_images.ipynb) shows briefly how to load 3D data in DICOM format.  
+_(beginner recommended)_
+- [DICOM Data Wrangling](https://github.com/RSNA/AI-Deep-Learning-Lab-2022/blob/main/sessions/dicom-wrangling/DataWranglingRSNA2022.ipynb) hands-on from the RSNA AI Deep Learning Lab 2022 is great for DICOM inspection and curation.  
+_(beginner recommended)_ 
+
+[**NIfTI**](https://nifti.nimh.nih.gov/) (Neuroimaging Informatics Technology Initiative) is a neuroimagery-specific file format designed to support analysis beyond the clinical workflow.
+
+Selecting between the DICOM and NIfTI format is largely dependent on the needs and niche of the end user. DICOM is complex, comprehensive, and highly specific to support needs across the entire
+spectrum of medical imaging and clinical workflows, while NIfTI is comparatively simple, minimalistic, and easy to support, and sometimes better suited for research purposes. Frequently, researchers will convert DICOM data output by a scanning instrument into NIfTI for analysis and dissemination [[source](https://conservancy.umn.edu/handle/11299/216582)].
+
+**In this section's** [**notebook**](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/2-%20Data-inspection-and-curation-DL.ipynb), we will inspect MRI DICOM data points, convert them to the NIfTI file format, visualize them, curate the various sequences of the MRI protocol to correspond to each other, and finally process them along radiology and pathology reports into a unified data file ready for deep learning applications.
+
+### Digital pathology
+Useful resources include:
+- The [histolab](https://github.com/histolab/histolab/) python-based toolbox for whole slide imaging (WSI) processing.
+- The [TIAToolbox](https://github.com/TissueImageAnalytics/tiatoolbox) that provides an PyTorch-based end-to-end API for pathology image analysis.
+- The _Digital Pathology_ [MONAI tutorials](https://github.com/Project-MONAI/tutorials).
 
 # 3. Data splitting 
-A properly inspected and curated data needs to split into training, validation and testing sets. Depending on the research question we are trying to answer, there might also be a need to withold/exclude some sets from our dataset. This section will cover exclusion / inclusion criteria, training, testing, and external validation.
+### ** Do not use the same data for model training and evaluation. **
 
-Link: [Data camp tutorial](https://github.com/datacamp/workspace-tutorial-python-data-preprocessing-train-test-split)
+For training and testing purposes, the data should be broken down into three distinct splits:
+- *training* - the set used to train and make the model learn the patterns in the data. The same set is fed to the network in each epoch. It should be diverse, unbiased and include variations, as possible, to cover all or most scenarios.
+- *validation* - the set, separate from the training and testing data, used to validate the model performance during training (model evaluation is performed on the validation set after every epoch). It helps to tune the hyperparameters.
+- *testing* - the set, separate from the training and validation data, used to test the model performance after completing the training.
 
-# 4. Data preprocessing 
+#### External/Clinical validation
+Under the context of AI in medical imaging, external clinical validation of AI algorithms attracts increasingly more attention, aiming to tackle their robustness and generalizability. This entails validating the developed/deployed model on new cases (that in principle are out of the training/validation/testing distribution) that might come from a different source/centre, collected with a different setup/protocol, in a different timeframe and group of patients.
 
-Image preprocessing (Apostolia) 
+### Techniques
 
-**Registration**
+- *Random* - oldest and most popular method. All data is shuffled, and samples are picked randomly for the train, validation, and the test set based on the split ratio. Works good on class-balanced datasets.
+- *Stratified* - TO ADD
+- *Non-random* - TO ADD
+- *Cross-validation* - TO ADD
 
-Image registration is useful to align data/images in the same space for further processing. Both theoretical and practical tutorials are available for this section.
+#### ** There is no optimal split percentage ** 
+However, it is clear that the quantity of training data should be higher than the other two sets . The dataset split ratio depends on the number of data samples present and the model. You need to come up with an optimum split that suits the need of the dataset/model.
 
-- Theoretical tutorial: https://github.com/MedicalImageAnalysisTutorials/ImageRegistrationTutorial
-- Image registration with MONAI: https://github.com/Project-MONAI/tutorials
+### Tricks
+
+1. If there are many hyperparameters to tune, a larger validation set is preferred to optimize the model performance.
+2. Validate the model after each epoch to make the model learn varied scenarios.
+3. Experiment with the split ratio. Try different schemes, like 80/10/10, 70/15/15, 60/20/20, or 70/20/10 (train/val/test) considering that if there are less training data the model might show high variance in training, while if there less validation or testing data the model evaluation metrics and final performance will show higher variance. 
+
+# 4. Data preprocessing
+Data preprocessing operations may include, but not limited to, image orientation correction/transformation, resizing/resampling and anti-aliasing algorithms, cropping or padding, and image registration to align the data in the same space for further processing. 
+
+In the first part of **this and next section's** [**notebook**](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/4-5-%20Data-preprocessing-and-augmentation.ipynb) we will go through a set of data preprocessing steps, while we have already seen some 3D image registration examples in the [data curation notebbok](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/2-%20Data-inspection-and-curation-DL.ipynb).
+
+We additionally provide optional resources on:
+- [2D image registratio theory](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/4-%20Data-preprocessing-2D-registration-Transforms-%5BTheoretical%5D.ipynb), and 
+- [2D image registration with MONAI](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/4-%20Data-preprocessing-2D-registration-MONAI-%5Boptional%5D.ipynb)
 
 # 5. Data augmentation
-*Tensorflow tutorials:* https://notebook.community/tensorflow/docs/site/en/tutorials/images/data_augmentation
+TO ADD
+<!-- *Tensorflow tutorials:* https://notebook.community/tensorflow/docs/site/en/tutorials/images/data_augmentation -->
 
 # 6. Data reporting
-
-# 7. Data loaders
+TO ADD
+<!-- # 7. Data loaders -->
 
 # Contact
 Coordinators:
@@ -85,7 +135,7 @@ Coordinators:
 - Apostolia Tsirikoglou (apostolia.tsirikoglou@ki.se)
 - Martijn Starmans (m.starmans@erasmusmc.nl)
 
-Contributers:
+Contributors:
 
 - Mahlet Birhanu
 - Douwe Spaanderman
