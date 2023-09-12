@@ -20,33 +20,43 @@ What is Data-centric AI?
 ## 0. Introduction to Google colab
 Google collab is a free notebook environment that runs entirely in the [cloud](https://colab.research.google.com/drive/16pBJQePbqkz3QFV54L4NIkOn1kwpuRrj#scrollTo=BCmeo64HcLfs).
 
-We will be using extensive use of this notebook throught this summer school. Google colab lets us write and execute arbitrary python code through the browser, and is especially well suited to machine learning, data analysis and education. More technically, Colab is a hosted Jupyter notebook service that requires no setup to use, while providing access free of charge to computing resources including GPUs.
+We will be using extensive use of this notebook throught this summer school. Google Colab lets us write and execute arbitrary Python code through the browser, and is especially well suited to machine learning, data analysis and education. More technically, Colab is a hosted Jupyter notebook service that requires no setup to use, while providing access free of charge to computing resources including GPUs.
+
+We have added an introductory [notebook](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/0-%20Into-to-Google-Colab-%5Boptional%5D.ipynb)
+on Google Colab to this repository, which we recommend to start with if you've never used it.
 
 # 1. Open Acccess Datasets
 Datasets are the entry point and one of the most important aspects of medical imaging research or any research in general. Public and free datasets in the medical field are quite limited. The following links are the best way to get started.
 
 ## MedMNIST
-The MedNIST dataset was created for educational purposes and contains medical images gathered from several sets from TCIA, the RSNA Bone Age Challenge, and the NIH Chest X-ray dataset. The name MedNIST was inspired by the popular MNIST dataset, which has been called "the 'Hello World' of deep learning."
+The MedNIST dataset was created for educational purposes and contains medical images gathered from several sets from TCIA (see below), the RSNA Bone Age Challenge, and the NIH Chest X-ray dataset. The name MedNIST was inspired by the popular MNIST dataset, which has been called "the 'Hello World' of deep learning."
 
 *Medical MNIST Paper*: https://medmnist.com/
 
 *Medical MNIST Data*: https://www.kaggle.com/datasets/andrewmvd/medical-mnist
 
-## TCIA - The Cancer Imaging Archive
-Link:  https://wiki.cancerimagingarchive.net/display/Public/Wiki
+We have added an **optional** [notebook](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/1-%20Datasets-MedNist-%5Boptional%5D.ipynb)
+to simply introduce you to MedMNIST to this repository.
 
-*TCIA tutorials*: https://github.com/kirbyju/TCIA_Notebooks
+## TCIA - The Cancer Imaging Archive
+The TCIA is one of the largest repositories of public, freely available radiology and histopathology data. While originally aimed at cancer, the TCIA also contains non-cancer datasets. Most datasets besides images also contain annotations and clinical data. For more info, seehttps://wiki.cancerimagingarchive.net/display/Public/Wiki.
+
+We have added an **optional** [notebook](https://github.com/AFRICAI-MICCAI/model_development_1_data/blob/main/Notebooks/1-%20Datasets-TCIA-%5Boptional%5D.ipynb)
+to this repository showcasing how to use the TCIA API to download datasets. Many more TCIA tutorials can be found at https://github.com/kirbyju/TCIA_Notebooks.
 
 ## UK Biobank
 UK Biobank is a large-scale biomedical database and research resource, containing in-depth genetic and health information from half a million UK participants. Data can be available to approved researchers.
 
 Link: https://www.ukbiobank.ac.uk/
 
+Since the UK Biobank is not freely publicly available, no notebooks on this subject have been added.
 
 ## Grand Challenge
 Grand Challenge is a platform for end-to-end development of machine learning solutions in biomedical imaging. it can be useful to try out your algorithm on public dataset from challenges.
 
-Link: https://grand-challenge.org/documentation/
+To checkout more info on how to use grand challenge, either the datasets or competing by uploading your own algorithms,
+we refer to: https://grand-challenge.org/documentation/
+
 
 # 2. Know your data
 To make most out of the data at hand we need to know the power they carry. It is essential to inspect them according to their format and analyze all the information they contain, from pixel data and ground truth labels statistics, to outliers, irregularities and metadata analysis. 
@@ -67,12 +77,12 @@ to be the most commonly used in computer vision.
 There are several tools for inspecting and handling DICOM data, for example:
 - TCIA provides useful DICOM introductory material and examples of [DICOM tools](https://wiki.cancerimagingarchive.net/display/Public/DICOM+Tools), while [TCIA_Notebooks](https://github.com/kirbyju/TCIA_Notebooks) offer examples on downloading and inspecting DICOM data.
 - [pydicom](https://pydicom.github.io/pydicom/stable/index.html#) is a python package for working with DICOM files. In their [Tutorials](https://pydicom.github.io/pydicom/stable/tutorials/index.html) and [Examples](https://pydicom.github.io/pydicom/stable/auto_examples/index.html#) you can find code samples ranging from dataset basics to image and metadata processing.  
-- MONAI tutorial on [loading medical images](https://github.com/Project-MONAI/tutorials/blob/main/modules/load_medical_images.ipynb) shows briefly how to load 3D data in DICOM format.  
+- MONAI tutorial on [loading medical images](https://github.com/Project-MONAI/tutorials/blob/main/modules/load_medical_images.ipynb) shows briefly how to load 3D data in DICOM format. We will go in more details on using MONAI in the Model Development 2 session.  
 _(beginner recommended)_
 - [DICOM Data Wrangling](https://github.com/RSNA/AI-Deep-Learning-Lab-2022/blob/main/sessions/dicom-wrangling/DataWranglingRSNA2022.ipynb) hands-on from the RSNA AI Deep Learning Lab 2022 is great for DICOM inspection and curation.  
 _(beginner recommended)_ 
 
-[**NIfTI**](https://nifti.nimh.nih.gov/) (Neuroimaging Informatics Technology Initiative) is a neuroimagery-specific file format designed to support analysis beyond the clinical workflow.
+[**NIfTI**](https://nifti.nimh.nih.gov/) (Neuroimaging Informatics Technology Initiative) is a neuroimagery-specific file format designed to support analysis beyond the clinical workflow. Nowadays, it's one of the standard compressed file formats used in medical imaging AI beyond neuroimaging.
 
 Selecting between the DICOM and NIfTI format is largely dependent on the needs and niche of the end user. DICOM is complex, comprehensive, and highly specific to support needs across the entire
 spectrum of medical imaging and clinical workflows, while NIfTI is comparatively simple, minimalistic, and easy to support, and sometimes better suited for research purposes. Frequently, researchers will convert DICOM data output by a scanning instrument into NIfTI for analysis and dissemination [[source](https://conservancy.umn.edu/handle/11299/216582)].
@@ -86,7 +96,7 @@ Useful resources include:
 - The _Digital Pathology_ [MONAI tutorials](https://github.com/Project-MONAI/tutorials).
 
 # 3. Data splitting 
-### ** Do not use the same data for model training and evaluation. **
+### ** Never use the same data for model training and evaluation. **
 
 For training and testing purposes, the data should be broken down into three distinct splits:
 - *training* - the set used to train and make the model learn the patterns in the data. The same set is fed to the network in each epoch. It should be diverse, unbiased and include variations, as possible, to cover all or most scenarios.
@@ -127,13 +137,12 @@ TO ADD
 
 # 6. Data reporting
 TO ADD
-<!-- # 7. Data loaders -->
 
 # Contact
 Coordinators:
 
 - Apostolia Tsirikoglou (apostolia.tsirikoglou@ki.se)
-- Martijn Starmans (m.starmans@erasmusmc.nl)
+- Martijn P. A. Starmans (m.starmans@erasmusmc.nl)
 
 Contributors:
 
