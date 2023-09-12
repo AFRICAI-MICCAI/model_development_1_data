@@ -1,4 +1,6 @@
 # AFRICAI/MICCAI AI in Medical Imaging in Africa Summer School - 2023
+<img src="images/AFRICAI_banner.jpg" alt="Overview"/>
+
 Materials for the 1st AFRICAI Summer School session for the session
 "Model Development 1: Data-centric best practices and common pitfalls and open access infrastructures". 
 For more information, see the AFRICAI website: https://africai.org/summer-school/. 
