@@ -1,4 +1,5 @@
 # AFRICAI/MICCAI AI in Medical Imaging in Africa Summer School - 2023
+
 <img src="images/AFRICAI_banner.jpg" alt="Overview"/>
 
 Materials for the 1st AFRICAI Summer School session for the session
